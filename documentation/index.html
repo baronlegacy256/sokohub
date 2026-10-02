@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SokoHub Marketplace — Documentation</title>
+  <link rel="stylesheet" href="assets/css/documentation.css">
+</head>
+<body>
+  <header class="docs-topbar">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" type="button">Menu</button>
+    <a class="docs-brand" href="#welcome" style="color:inherit;text-decoration:none">
+      <img src="assets/images/logo/logo.svg" alt="SokoHub logo">
+      <span><strong>SokoHub</strong><span>Marketplace Documentation</span></span>
+    </a>
+    <div class="docs-search">
+      <input id="docsSearch" type="search" placeholder="Search the documentation..." aria-label="Search documentation">
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <nav class="docs-sidebar" id="sidebar" aria-label="Documentation navigation">
+      <div class="nav-group">
+        <h2>Start Here</h2>
+        <a href="#welcome">Welcome</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#features">Features</a>
+        <a href="#stack">Technology Stack</a>
+        <a href="#installation">Installation</a>
+        <a href="#configuration">Environment Config</a>
+        <a href="#database">Database Setup</a>
+      </div>
+      <div class="nav-group">
+        <h2>Using the Product</h2>
+        <a href="#authentication">Authentication</a>
+        <a href="#admin">Admin Guide</a>
+        <a href="#seller">Seller Guide</a>
+        <a href="#buyer">Buyer Guide</a>
+        <a href="#customization">Customization</a>
+        <a href="#structure">Project Structure</a>
+      </div>
+      <div class="nav-group">
+        <h2>Launch & Maintain</h2>
+        <a href="#deployment">Deployment</a>
+        <a href="#updating">Updating</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#faq">FAQ</a>
+        <a href="#credits">Credits</a>
+        <a href="#support">Support</a>
+        <a href="#changelog">Changelog</a>
+      </div>
+    </nav>
+
+    <main class="docs-main">
+      <div class="docs-hero">
+        <h1>SokoHub Marketplace Documentation</h1>
+        <p>Official guide for installing, configuring, customizing and launching the SokoHub Uganda classifieds marketplace.</p>
+        <div class="badge-row">
+          <span class="badge">Next.js 16</span>
+          <span class="badge">React 19</span>
+          <span class="badge">TypeScript</span>
+          <span class="badge">Tailwind CSS 4</span>
+          <span class="badge">Supabase schema included</span>
+        </div>
+      </div>
+
+      <section class="doc-section" id="welcome">
+        <h2>Welcome</h2>
+        <div class="card">
+          <p>Thank you for purchasing <strong>SokoHub</strong>.</p>
+          <p>SokoHub is a classifieds marketplace for buying and selling local goods and services in Uganda. It is inspired by the classifieds marketplace model and ships with original branding, UI, seed data and copy.</p>
+          <p>The included app gives you marketplace discovery, advanced listing search, seller dashboards, admin screens, seeded users/listings, favorites, messaging, notifications, promotion packages and a production-ready Supabase SQL schema.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Main capabilities</h3>
+            <ul>
+              <li>Browse and search listings by keyword, category, location, price and attributes</li>
+              <li>Post listings with dynamic category-specific fields</li>
+              <li>Manage listings from a seller dashboard</li>
+              <li>Message sellers and reveal phone/WhatsApp contact actions</li>
+              <li>Promote listings with demo payment packages</li>
+              <li>Explore admin screens for users, ads, reports, reviews, payments and settings</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Technology stack</h3>
+            <ul>
+              <li>Next.js 16 App Router</li>
+              <li>React 19</li>
+              <li>TypeScript</li>
+              <li>Tailwind CSS 4</li>
+              <li>localStorage-backed demo state</li>
+              <li>Supabase/PostgreSQL schema design</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout info"><strong>Important:</strong> The app UI currently uses seeded data and client-side demo state in `localStorage`. The Supabase schema in `supabase/schema.sql` is included as the production database design, not as a mandatory runtime dependency.</div>
+      </section>
+
+      <section class="doc-section" id="requirements">
+        <h2>Requirements</h2>
+        <table>
+          <tr><th>Item</th><th>Required?</th><th>Notes</th></tr>
+          <tr><td>Node.js</td><td>Yes</td><td>Use Node.js 20.x or newer, preferably the current LTS release.</td></tr>
+          <tr><td>npm</td><td>Yes</td><td>Included with Node.js. The project uses `package-lock.json`.</td></tr>
+          <tr><td>Next.js</td><td>Included</td><td>Installed through npm; no separate global install is required.</td></tr>
+          <tr><td>Supabase</td><td>Optional</td><td>Only needed if you plan to implement the included production schema.</td></tr>
+          <tr><td>Database</td><td>Optional</td><td>The demo app runs without a database; `supabase/schema.sql` is provided for production.</td></tr>
+          <tr><td>Prisma</td><td>No</td><td>This project does not currently use Prisma.</td></tr>
+          <tr><td>Environment variables</td><td>No</td><td>The current app does not read `process.env` values at runtime.</td></tr>
+        </table>
+      </section>
+
+      <section class="doc-section" id="features">
+        <h2>Features</h2>
+        <div class="grid-3">
+          <div class="card"><h3>Marketplace</h3><ul><li>~142 seeded listings</li><li>UGX pricing</li><li>Category pages</li><li>Listing detail pages</li><li>Neighborhood/location seed data</li></ul></div>
+          <div class="card"><h3>Search & Filters</h3><ul><li>Keyword search</li><li>Category/subcategory filters</li><li>Location, price and condition filters</li><li>Category-specific attribute filters</li><li>Sorting and pagination</li></ul></div>
+          <div class="card"><h3>Accounts</h3><ul><li>Demo login/register</li><li>Role labeling from email prefix</li><li>Favorites</li><li>Profile settings</li><li>localStorage persistence</li></ul></div>
+          <div class="card"><h3>Seller</h3><ul><li>Sell wizard</li><li>Dynamic attributes</li><li>Photo ordering and cover selection</li><li>Dashboard ads table</li><li>Promotions and packages</li></ul></div>
+          <div class="card"><h3>Contact</h3><ul><li>Internal conversations</li><li>WhatsApp deep links</li><li>Phone reveal pattern</li><li>Notifications</li><li>Report listing/problem forms</li></ul></div>
+          <div class="card"><h3>Admin</h3><ul><li>Users, ads and reports screens</li><li>Categories/locations/content/settings</li><li>Payments/subscriptions/promotions</li><li>Analytics and audit-log screens</li><li>Roles/security/support screens</li></ul></div>
+        </div>
+        <figure class="screenshot">
+          <img src="assets/images/screenshots/03-marketplace.png" alt="Marketplace screenshot placeholder">
+          <figcaption>Placeholder: Marketplace listing feed. Replace `assets/images/screenshots/03-marketplace.png` with a real screenshot.</figcaption>
+        </figure>
+      </section>
+
+      <section class="doc-section" id="stack">
+        <h2>Technology Stack</h2>
+        <table>
+          <tr><th>Layer</th><th>Technology</th><th>Where</th></tr>
+          <tr><td>Framework</td><td>Next.js 16.3.8</td><td>`package.json`, `src/app/*`</td></tr>
+          <tr><td>UI</td><td>React 19.2.8</td><td>`package.json`</td></tr>
+          <tr><td>Language</td><td>TypeScript</td><td>`tsconfig.json`, `src/**/*.ts(x)`</td></tr>
+          <tr><td>Styling</td><td>Tailwind CSS 4</td><td>`src/app/globals.css`, `postcss.config.mjs`</td></tr>
+          <tr><td>Icons</td><td>lucide-react</td><td>`package.json`</td></tr>
+          <tr><td>Demo state</td><td>React Context + localStorage</td><td>`src/context/AppContext.tsx`</td></tr>
+          <tr><td>Database design</td><td>Supabase/PostgreSQL SQL</td><td>`supabase/schema.sql`</td></tr>
+          <tr><td>Type checking</td><td>tsc / Next build</td><td>`npm run build`</td></tr>
+        </table>
+      </section>
+
+      <section class="doc-section" id="installation">
+        <h2>Installation</h2>
+        <div class="callout info"><strong>Beginner note:</strong> Open your terminal inside the project folder before running these commands.</div>
+        <ol class="flow">
+          <li><strong>Extract the files.</strong> Unzip the downloaded package and open the project folder.</li>
+          <li><strong>Install dependencies.</strong> This downloads Next.js, React, Tailwind and related packages listed in <code>package.json</code>.
+            <pre><code>npm install</code></pre>
+          </li>
+          <li><strong>Start the development server.</strong>
+            <pre><code>npm run dev</code></pre>
+            <p>Open <code>http://localhost:3000</code>.</p>
+          </li>
+          <li><strong>Try the demo.</strong> Visit <code>/ads?q=Toyota&location=Kampala</code>, post at <code>/sell</code>, and log in with an email starting with <code>admin</code> to preview <code>/admin</code>.</li>
+          <li><strong>Build for production.</strong>
+            <pre><code>npm run build</code></pre>
+          </li>
+          <li><strong>Start the production server.</strong>
+            <pre><code>npm run start</code></pre>
+          </li>
+        </ol>
+        <h3>Useful commands</h3>
+        <pre><code>npm run lint
+npx tsc --noEmit
+npm run build
+npm run start</code></pre>
+      </section>
+
+      <section class="doc-section" id="configuration">
+        <h2>Environment Configuration</h2>
+        <p>The current application does <strong>not</strong> require environment variables. It runs without `.env`, `.env.local`, Supabase keys, payment credentials, or database URLs.</p>
+        <div class="callout warning"><strong>No secrets:</strong> Do not commit real API keys or database credentials. This project currently contains no required <code>process.env</code> variables.</div>
+        <p>Marketplace name, logo-adjacent text, support details, currency, SEO and contact settings are centralized in:</p>
+        <pre><code>src/lib/config.ts</code></pre>
+        <p>The admin settings screen saves an override to browser <code>localStorage</code> under <code>sokohub_marketplace</code>. To make permanent changes, edit <code>defaultConfig</code> in <code>src/lib/config.ts</code>.</p>
+      </section>
+
+      <section class="doc-section" id="database">
+        <h2>Database Setup</h2>
+        <p>The demo application does not connect to a live database. It ships with seed data in <code>src/lib/seed/*</code> and a production database blueprint in <code>supabase/schema.sql</code>.</p>
+        <h3>Use the Supabase schema</h3>
+        <ol class="flow">
+          <li>Create a Supabase project.</li>
+          <li>Open the SQL editor.</li>
+          <li>Copy the SQL from <code>supabase/schema.sql</code>.</li>
+          <li>Run it to create tables, indexes, constraints and RLS policies.</li>
+        </ol>
+        <p>The schema includes:</p>
+        <table>
+          <tr><th>Area</th><th>Tables</th></tr>
+          <tr><td>Users/roles</td><td><code>profiles</code>, <code>seller_verifications</code>, <code>admin_actions</code></td></tr>
+          <tr><td>Listings</td><td><code>categories</code>, <code>subcategories</code>, <code>category_attributes</code>, <code>ads</code>, <code>ad_images</code>, <code>ad_attributes</code></td></tr>
+          <tr><td>Engagement</td><td><code>favorites</code>, <code>conversations</code>, <code>messages</code>, <code>reports</code>, <code>reviews</code>, <code>notifications</code></td></tr>
+          <tr><td>Monetization</td><td><code>payments</code>, <code>promotions</code>, <code>subscriptions</code></td></tr>
+        </table>
+        <div class="callout info"><strong>Prisma:</strong> No Prisma schema, migrations or Prisma commands are included in this project.</div>
+      </section>
+
+      <section class="doc-section" id="authentication">
+        <h2>Authentication</h2>
+        <p>Authentication is a client-side demo implemented in <code>src/context/AppContext.tsx</code>. Login and registration store a demo user in <code>localStorage</code> key <code>sokohub_user</code>.</p>
+        <table>
+          <tr><th>Behavior</th><th>Implementation</th></tr>
+          <tr><td>Login</td><td><code>/login</code> calls <code>login(email, name)</code>. An email starting with <code>admin</code> creates an admin-role demo user; <code>mod</code> creates a moderator.</td></tr>
+          <tr><td>Register</td><td><code>/register</code> collects name, email and password, then routes into the demo flow. No password is validated or sent to a server.</td></tr>
+          <tr><td>Logout</td><td>Clears the local demo user from <code>localStorage</code>.</td></tr>
+          <tr><td>Password recovery</td><td>Not implemented.</td></tr>
+          <tr><td>Social auth</td><td>Not implemented.</td></tr>
+        </table>
+        <div class="callout warning"><strong>Production note:</strong> Before selling the product as a real marketplace, replace demo auth with Supabase Auth, Clerk, NextAuth/Auth.js, or your selected authentication provider.</div>
+      </section>
+
+      <section class="doc-section" id="admin">
+        <h2>Admin / Dashboard Guide</h2>
+        <p>Admin routes live under <code>src/app/admin/*</code>. The demo admin is available by logging in with an email that starts with <code>admin</code>.</p>
+        <h3>Included admin screens</h3>
+        <table>
+          <tr><th>Route</th><th>Screen</th></tr>
+          <tr><td><code>/admin</code></td><td>Dashboard summary with users, listings, reports, payments and quick actions</td></tr>
+          <tr><td><code>/admin/users</code></td><td>User list and detail screens</td></tr>
+          <tr><td><code>/admin/ads</code></td><td>Ad moderation list and ad detail/moderation screen</td></tr>
+          <tr><td><code>/admin/reports</code></td><td>Reported listings and issues</td></tr>
+          <tr><td><code>/admin/reviews</code></td><td>Seller review management screen</td></tr>
+          <tr><td><code>/admin/categories</code>, <code>/admin/locations</code></td><td>Taxonomy and location management screens</td></tr>
+          <tr><td><code>/admin/payments</code>, <code>/admin/subscriptions</code></td><td>Payment and subscription overviews</td></tr>
+          <tr><td><code>/admin/promotions</code></td><td>Promotion management and package setup</td></tr>
+          <tr><td><code>/admin/settings</code></td><td>Marketplace/general/payment/security/moderation settings</td></tr>
+          <tr><td><code>/admin/analytics</code>, <code>/admin/audit-logs</code></td><td>Reports, analytics and activity logs screens</td></tr>
+        </table>
+        <figure class="screenshot">
+          <img src="assets/images/screenshots/05-admin-dashboard.png" alt="Admin dashboard screenshot placeholder">
+          <figcaption>Placeholder: Admin dashboard. Replace `assets/images/screenshots/05-admin-dashboard.png`.</figcaption>
+        </figure>
+      </section>
+
+      <section class="doc-section" id="seller">
+        <h2>Seller / Vendor Guide</h2>
+        <p>Seller functionality is exposed through <code>/sell</code> and <code>/dashboard/*</code>.</p>
+        <ol class="flow">
+          <li>Go to <code>/sell</code> and choose a category.</li>
+          <li>Choose a subcategory.</li>
+          <li>Fill in title, description, price, negotiable status, photos and dynamic category fields.</li>
+          <li>Set location and phone/WhatsApp details.</li>
+          <li>Preview and submit. In the demo flow, submitted ads are represented as pending review items.</li>
+        </ol>
+        <p>The seller dashboard includes <code>/dashboard/ads</code>, <code>/dashboard/ads/create</code>, <code>/dashboard/ads/[id]/edit</code>, <code>/dashboard/ads/[id]/analytics</code>, <code>/dashboard/analytics</code>, <code>/dashboard/messages</code>, <code>/dashboard/payments</code>, <code>/dashboard/promotions</code> and <code>/dashboard/settings</code>.</p>
+      </section>
+
+      <section class="doc-section" id="buyer">
+        <h2>Buyer Guide</h2>
+        <ol class="flow">
+          <li>Browse the homepage, <code>/ads</code> or <code>/ads/[category]</code>.</li>
+          <li>Search by keyword and filter by location, price, condition, category and attributes.</li>
+          <li>Sort results and paginate through listing pages.</li>
+          <li>Open a listing at <code>/ad/[slug]</code> to view photos, specs, seller and contact actions.</li>
+          <li>Use favorites, internal chat, report listing and contact flows.</li>
+        </ol>
+        <figure class="screenshot">
+          <img src="assets/images/screenshots/04-product-details.png" alt="Product details screenshot placeholder">
+          <figcaption>Placeholder: Listing detail page. Replace `assets/images/screenshots/04-product-details.png`.</figcaption>
+        </figure>
+      </section>
+
+      <section class="doc-section" id="customization">
+        <h2>Customization</h2>
+        <table>
+          <tr><th>What to change</th><th>Where</th><th>Notes</th></tr>
+          <tr><td>Marketplace name, SEO, support details, currency</td><td><code>src/lib/config.ts</code></td><td>Edit <code>defaultConfig</code>.</td></tr>
+          <tr><td>Categories and locations</td><td><code>src/lib/data.ts</code></td><td>Categories drive navigation and filters.</td></tr>
+          <tr><td>Category-specific fields</td><td><code>src/lib/categoryFields.ts</code></td><td>Controls dynamic listing attributes.</td></tr>
+          <tr><td>Seed listings and sellers</td><td><code>src/lib/seed/ads.ts</code>, <code>src/lib/seed/sellers.ts</code></td><td>Replace or trim demo data.</td></tr>
+          <tr><td>Dummy listing imagery helper</td><td><code>src/lib/seed/images.ts</code></td><td>Used by seed data, sell form and editor defaults.</td></tr>
+          <tr><td>Promotion packages and gateways</td><td><code>src/lib/packages.ts</code></td><td>Demo package and gateway catalog.</td></tr>
+          <tr><td>Global styles</td><td><code>src/app/globals.css</code></td><td>Tailwind 4 global CSS.</td></tr>
+          <tr><td>Favicon/icon</td><td><code>src/app/icon.svg</code></td><td>Replace with your brand icon.</td></tr>
+          <tr><td>Header/footer/nav</td><td><code>src/components/Header.tsx</code>, <code>Footer.tsx</code>, <code>MobileNav.tsx</code></td><td>Update links and branding here.</td></tr>
+          <tr><td>Colors</td><td>Tailwind classes across <code>src/**/*.tsx</code> and <code>src/app/globals.css</code></td><td>Primary green is commonly <code>green-600</code>.</td></tr>
+        </table>
+      </section>
+
+      <section class="doc-section" id="structure">
+        <h2>Project Structure</h2>
+        <pre><code>project/
+├── src/
+│   ├── app/                 # App Router routes
+│   ├── components/          # UI components
+│   ├── context/             # AppContext demo state
+│   └── lib/                 # Types, catalog, config, seed data
+├── public/                  # Static assets
+├── supabase/                # Production SQL schema design
+├── documentation/           # Standalone buyer documentation
+├── package.json
+├── next.config.ts
+├── postcss.config.mjs
+├── tsconfig.json
+└── README.md</code></pre>
+        <p>The standalone documentation lives in <code>documentation/</code> and is intentionally separate from the Next.js App Router.</p>
+      </section>
+
+      <section class="doc-section" id="deployment">
+        <h2>Deployment</h2>
+        <h3>Vercel</h3>
+        <ol class="flow">
+          <li>Push the project to GitHub, GitLab or Bitbucket.</li>
+          <li>Import the repository into Vercel.</li>
+          <li>Use the default Next.js settings.</li>
+          <li>Build command: <code>npm run build</code>.</li>
+          <li>Output: Next.js default.</li>
+          <li>Deploy.</li>
+        </ol>
+        <h3>Self-hosted Node.js</h3>
+        <pre><code>npm install
+npm run build
+npm run start</code></pre>
+        <p>Serve the process behind your reverse proxy of choice. If you later connect Supabase, add the required environment variables in your hosting provider.</p>
+      </section>
+
+      <section class="doc-section" id="updating">
+        <h2>Updating the Application</h2>
+        <ol class="flow">
+          <li>Back up your project files and database if you connected one.</li>
+          <li>Replace the updated source files carefully.</li>
+          <li>Reinstall dependencies with <code>npm install</code>.</li>
+          <li>Re-run <code>npm run lint</code> and <code>npm run build</code>.</li>
+          <li>If using Supabase, apply only the SQL changes introduced by the update.</li>
+        </ol>
+      </section>
+
+      <section class="doc-section" id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <table>
+          <tr><th>Problem</th><th>Likely cause</th><th>Solution</th></tr>
+          <tr><td><code>npm install</code> fails</td><td>Node/npm version too old or cache issue</td><td>Use Node.js 20+, delete <code>node_modules</code> and <code>package-lock.json</code> only if you know what you are doing, then reinstall.</td></tr>
+          <tr><td>Dev server port in use</td><td>Another process uses port 3000</td><td>Run <code>npm run dev -- -p 3001</code>.</td></tr>
+          <tr><td>Build fails</td><td>TypeScript/lint/runtime import issue</td><td>Run <code>npx tsc --noEmit</code> and fix the reported file/line.</td></tr>
+          <tr><td>Images broken</td><td>Remote host not allowed or service unavailable</td><td>Check <code>next.config.ts</code> remote patterns and the image helper in <code>src/lib/seed/images.ts</code>.</td></tr>
+          <tr><td>Admin not visible</td><td>Email does not start with <code>admin</code></td><td>Log out and log in with e.g. <code>admin@example.com</code>.</td></tr>
+          <tr><td>Supabase tables missing</td><td>SQL was not run</td><td>Run <code>supabase/schema.sql</code> in the Supabase SQL editor.</td></tr>
+        </table>
+      </section>
+
+      <section class="doc-section" id="faq">
+        <h2>FAQ</h2>
+        <div class="card">
+          <h3>Do I need a database to run the demo?</h3>
+          <p>No. The app uses seed data and localStorage for demo state.</p>
+          <h3>Is Prisma included?</h3>
+          <p>No. Prisma is not used in this project.</p>
+          <h3>Does it charge real money?</h3>
+          <p>No. Promotion and payment screens are demo flows using catalog data in <code>src/lib/packages.ts</code>.</p>
+          <h3>Can I use Supabase?</h3>
+          <p>Yes as a production database target. Run <code>supabase/schema.sql</code>, then wire the app to Supabase Auth and tables.</p>
+        </div>
+      </section>
+
+      <section class="doc-section" id="credits">
+        <h2>Credits & Resources</h2>
+        <table>
+          <tr><th>Asset/library</th><th>Purpose</th><th>Notes</th></tr>
+          <tr><td>Next.js</td><td>React framework</td><td>Installed via npm from <code>package.json</code></td></tr>
+          <tr><td>React</td><td>UI library</td><td>Installed via npm</td></tr>
+          <tr><td>Tailwind CSS</td><td>Styling</td><td>Installed via npm, config in <code>postcss.config.mjs</code></td></tr>
+          <tr><td>lucide-react</td><td>Icons</td><td>Installed via npm</td></tr>
+          <tr><td>TypeScript</td><td>Types</td><td>Installed via npm</td></tr>
+          <tr><td>Dummyimage</td><td>Product placeholder images</td><td>External dummy image service used by seed/demo image helper</td></tr>
+          <tr><td>Pravatar</td><td>Demo seller avatars</td><td>External dummy portrait service used in seed sellers</td></tr>
+          <tr><td>Supabase schema</td><td>Database design</td><td><code>supabase/schema.sql</code>; not required for demo</td></tr>
+        </table>
+        <div class="callout info"><strong>License note:</strong> Review the licenses of npm packages and external placeholder services before production use.</div>
+      </section>
+
+      <section class="doc-section" id="support">
+        <h2>Support</h2>
+        <p>For support, contact the author through your marketplace purchase channel. Support should cover installation, included features and basic usage of the product. Custom development, server administration, and unrelated third-party services may require separate assistance.</p>
+      </section>
+
+      <section class="doc-section" id="changelog">
+        <h2>Changelog</h2>
+        <pre><code>Version 1.0.0
+- Initial release</code></pre>
+      </section>
+
+      <p class="toc" id="noResults">No sections match your search.</p>
+    </main>
+  </div>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+  <script src="assets/js/documentation.js"></script>
+</body>
+</html>
